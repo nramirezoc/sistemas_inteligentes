@@ -30,12 +30,12 @@ class TaskController extends Controller
     }
     
     public function update(Request $request, $id) {
-        $task = Task::findOrFail($id);
+        $task = Task::findOrFail($id); // Obtener la tarea por ID
         $task->title = $request->input('title');
         $task->description = $request->input('description');
         $task->status = $request->input('status', 'pending'); // Valor por defecto
         $task->save();
-        return redirect()->route('tasks.index');// Redirigir a la vista de tareas
+        return redirect()->route('tasks.index'); // Redirigir a la vista de tareas
     }
     
     public function destroy($id) {
